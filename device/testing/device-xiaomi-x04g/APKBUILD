@@ -1,0 +1,31 @@
+# Maintainer: Jens Reidel <adrian@travitia.xyz>
+
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-xiaomi-x04g
+pkgdesc="Xiaomi Mi Smart Clock"
+pkgver=1
+pkgrel=18
+url="https://postmarketos.org"
+license="MIT"
+arch="aarch64"
+options="!check !archcheck"
+depends="
+	postmarketos-base
+	linux-postmarketos-mediatek-mt8167
+	mkbootimg
+	mtk-mkimage
+"
+makedepends="devicepkg-dev"
+source="deviceinfo"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+e3a97c3444932402b7f0cd6d4ba92fa28700334be0462d2a3aaddb7705022f3e51cb599b6c355f6ce507e3a0d7eb94f658aa757a140a76fcedc4cdbe53030512  deviceinfo
+"

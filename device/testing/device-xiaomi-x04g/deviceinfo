@@ -1,0 +1,40 @@
+# Reference: <https://postmarketos.org/deviceinfo>
+# Please use double quotes only. You can source this file in shell scripts.
+
+deviceinfo_format_version="0"
+deviceinfo_name="Xiaomi Mi Smart Clock"
+deviceinfo_manufacturer="Xiaomi"
+deviceinfo_codename="xiaomi-x04g"
+deviceinfo_year="2021"
+deviceinfo_append_dtb="true"
+deviceinfo_dtb="mediatek/mt8167-xiaomi-x04g"
+deviceinfo_arch="aarch64"
+# FIXME: We either need a better flashing tool than mtkclient or need to add support in boot-deploy for specifying a boot partition when mtkclient is the flasher, currently flash_kernel_on_update just doesn't work
+# deviceinfo_flash_kernel_on_update="true"
+
+# Device related
+deviceinfo_chassis="embedded"
+deviceinfo_keyboard="false"
+deviceinfo_external_storage="true"
+deviceinfo_screen_width="800"
+deviceinfo_screen_height="480"
+
+# Bootloader related
+deviceinfo_flash_method="mtkclient"
+deviceinfo_generate_bootimg="true"
+deviceinfo_bootimg_qcdt="false"
+deviceinfo_bootimg_mtk_label_kernel="KERNEL"
+#deviceinfo_bootimg_mtk_label_ramdisk="ROOTFS"
+deviceinfo_bootimg_dtb_second="false"
+# This device needs os_version and os_patch_level to be set. TODO: Upstream this in boot-deploy
+deviceinfo_bootimg_custom_args="--header_version 0 --os_version 10.0.0 --os_patch_level 2021-06"
+deviceinfo_header_version="0"
+deviceinfo_kernel_cmdline="bootopt=64S3,32N2,64N2 buildvariant=user console=tty0 root=/dev/ram0 clk_ignore_unused pd_ignore_unused regulator_ignore_unused"
+# When booting a 64-bit kernel, Mediatek's bootloader expects the base offset to be aligned in a specific way. We add 0x78000 to base and substract it from all other offsets.
+deviceinfo_flash_offset_base="0x40078000"
+deviceinfo_flash_offset_dtb="0x13f88000"
+deviceinfo_flash_offset_kernel="0x00008000"
+deviceinfo_flash_offset_ramdisk="0x14f88000"
+deviceinfo_flash_offset_second="0x00e88000"
+deviceinfo_flash_offset_tags="0x13f88000"
+deviceinfo_flash_pagesize="2048"
